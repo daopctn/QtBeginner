@@ -18,7 +18,6 @@ public:
         setWindowTitle("Dynamic Layout - Exercise 2.5");
         setMinimumSize(400, 300);
         centerWindow();
-
         setupUI();
     }
 
@@ -39,37 +38,23 @@ private slots:
         fieldLayout->addWidget(lineEdit);
         fieldLayout->addWidget(removeBtn);
 
-        // Connect remove button to remove this specific field
+        // Connect remove button - lambda captures all needed references
         connect(removeBtn, &QPushButton::clicked, [this, fieldLayout, lineEdit, removeBtn]() {
-            removeField(fieldLayout, lineEdit, removeBtn);
+            // Remove widgets from layout
+            fieldLayout->removeWidget(lineEdit);
+            fieldLayout->removeWidget(removeBtn);
+
+            // Delete widgets
+            lineEdit->deleteLater();
+            removeBtn->deleteLater();
+
+            // Remove layout from parent and delete it
+            fieldsLayout->removeItem(fieldLayout);
+            delete fieldLayout;
         });
 
         // Add field layout to the fields container
         fieldsLayout->addLayout(fieldLayout);
-
-        // Store references for cleanup
-        fieldLayouts.append(fieldLayout);
-        lineEdits.append(lineEdit);
-        removeButtons.append(removeBtn);
-    }
-
-    void removeField(QHBoxLayout *fieldLayout, QLineEdit *lineEdit, QPushButton *removeBtn)
-    {
-        // Remove widgets from layout
-        fieldLayout->removeWidget(lineEdit);
-        fieldLayout->removeWidget(removeBtn);
-
-        // Delete widgets
-        
-
-        // Remove layout from parent and delete it
-        fieldsLayout->removeItem(fieldLayout);
-        fieldLayout->deleteLater();
-
-        // Remove from tracking lists
-        fieldLayouts.removeOne(fieldLayout);
-        lineEdits.removeOne(lineEdit);
-        removeButtons.removeOne(removeBtn);
     }
 
 private:
@@ -114,18 +99,13 @@ private:
         move(x, y);
     }
 
-    // UI Components
+    // UI Components - NO TRACKING VECTORS NEEDED
     QVBoxLayout *mainLayout;
     QVBoxLayout *fieldsLayout;
     QLabel *titleLabel;
     QPushButton *addButton;
     QScrollArea *scrollArea;
     QWidget *scrollWidget;
-
-    // Dynamic field tracking
-    QList<QHBoxLayout*> fieldLayouts;
-    QList<QLineEdit*> lineEdits;
-    QList<QPushButton*> removeButtons;
 };
 
 int main(int argc, char *argv[])
