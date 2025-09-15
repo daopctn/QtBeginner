@@ -22,20 +22,30 @@ public:
         setWindowTitle("Temperature Converter - Exercise 3.2");
         setMinimumSize(600, 400);
         centerWindow();
+
+        // Main layout
         mainLayout = new QVBoxLayout(this);
         mainLayout->setContentsMargins(10, 10, 10, 10);
         mainLayout->setSpacing(10);
+
+        // Title label
         titleLabel = new QLabel("Temperature Converter", this);
         titleLabel->setAlignment(Qt::AlignCenter);
         titleLabel->setStyleSheet("font-weight: bold; font-size: 16pt;");
+        // add Titlelabel to mainLayout
         mainLayout->addWidget(titleLabel);
+
+        // Input layout
         inputLayout = new QHBoxLayout();
         inputLayout->addWidget(inputCelsiusRadio = new QRadioButton("Celsius", this));
         inputLayout->addWidget(inputFahrenheitRadio = new QRadioButton("Fahrenheit", this));
         inputLayout->addWidget(inputKelvinRadio = new QRadioButton("Kelvin", this));
         inputCelsiusRadio->setChecked(true);
         inputLayout->setAlignment(Qt::AlignHCenter);
+        // add inputLayout to mainLayout
         mainLayout->addLayout(inputLayout);
+
+        // Temperature layout
         temperatureLayout = new QGridLayout();
         temperatureLayout->addWidget(inputTemperatureSpinBox = new QDoubleSpinBox(this), 0, 1);
         inputTemperatureSpinBox->setRange(-273.15, 1000.0);
@@ -45,13 +55,19 @@ public:
         temperatureLayout->addWidget(new QLabel("Fahrenheit:", this), 2, 0);
         temperatureLayout->addWidget(outputFahrenheitLabel = new QLabel("32.00 °F", this), 2, 1);
         temperatureLayout->addWidget(new QLabel("Kelvin:", this), 3, 0);
-        temperatureLayout->addWidget(outputKelvinLabel = new QLabel("273.15 K", this), 3, 1);
+        temperatureLayout->addWidget(outputKelvinLabel = new QLabel("273.15 K", this), 3, 1); // add temperatureLayout to mainLayout
         mainLayout->addLayout(temperatureLayout);
+
+        // connect buttons and spinbox to updateTemperatures function
+        // update values when spinbox value changes or radio button toggled
         connect(inputTemperatureSpinBox, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &Exercise32Window::updateTemperatures);
         connect(inputCelsiusRadio, &QRadioButton::toggled, this, &Exercise32Window::updateTemperatures);
         connect(inputFahrenheitRadio, &QRadioButton::toggled, this, &Exercise32Window::updateTemperatures);
         connect(inputKelvinRadio, &QRadioButton::toggled, this, &Exercise32Window::updateTemperatures);
+
         setLayout(mainLayout);
+
+        // initial update of temperature values, maybe dont need this
         updateTemperatures();
     }
 
@@ -66,6 +82,7 @@ private:
 
         move(x, y);
     }
+
     void updateTemperatures()
     {
         double inputTemp = inputTemperatureSpinBox->value();
