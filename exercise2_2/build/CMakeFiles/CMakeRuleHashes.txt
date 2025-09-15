@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-60ee4b0d52fcc85410e4fffa8181c22a CMakeFiles/exercise22_autogen
-e94691d1bbfaf72dfe496934780ce946 exercise22_autogen/timestamp

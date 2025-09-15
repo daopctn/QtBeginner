@@ -1,5 +1,0 @@
-/home/daopctn/Projects/V_Qt_projects/QtBeginner/exercise2_5/build/CMakeFiles/exercise25.dir
-/home/daopctn/Projects/V_Qt_projects/QtBeginner/exercise2_5/build/CMakeFiles/edit_cache.dir
-/home/daopctn/Projects/V_Qt_projects/QtBeginner/exercise2_5/build/CMakeFiles/rebuild_cache.dir
-/home/daopctn/Projects/V_Qt_projects/QtBeginner/exercise2_5/build/CMakeFiles/exercise25_autogen_timestamp_deps.dir
-/home/daopctn/Projects/V_Qt_projects/QtBeginner/exercise2_5/build/CMakeFiles/exercise25_autogen.dir
