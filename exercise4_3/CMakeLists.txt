@@ -12,10 +12,10 @@ set(SOURCES
     main.cpp
 )
 
-add_executable(exercise42 ${SOURCES})
+add_executable(exercise43 ${SOURCES})
 
-target_link_libraries(exercise42 Qt6::Core Qt6::Widgets)
+target_link_libraries(exercise43 Qt6::Core Qt6::Widgets)
 
 if(WIN32)
-    set_property(TARGET exercise42 PROPERTY WIN32_EXECUTABLE TRUE)
+    set_property(TARGET exercise43 PROPERTY WIN32_EXECUTABLE TRUE)
 endif()

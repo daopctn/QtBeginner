@@ -23,13 +23,13 @@
 #include <QMouseEvent>
 #include <QShortcut>
 // Main window class for the Mouse Tracker
-class Exercise41Window : public QWidget
+class Exercise42Window : public QWidget
 {
     Q_OBJECT
 
 public:
     // Constructor: sets up the UI and connects signals/slots
-    Exercise41Window(QWidget *parent = nullptr)
+    Exercise42Window(QWidget *parent = nullptr)
     {
         setWindowTitle("Exercise 4.2: Keyboard Shortcuts");                         // Set window title
         centerWindow();                                                             // Center the window on the screen
@@ -49,7 +49,7 @@ public:
         QShortcut *quitShortcut = new QShortcut(QKeySequence("Ctrl+Q"), this);
         connect(quitShortcut, &QShortcut::activated, this, &QWidget::close);
         QShortcut *helpShortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
-        connect(helpShortcut, &QShortcut::activated, this, &Exercise41Window::showHelpMessage);
+        connect(helpShortcut, &QShortcut::activated, this, &Exercise42Window::showHelpMessage);
 
         QShortcut *clearShortcut = new QShortcut(QKeySequence("Ctrl+N"), this);
         // label change on shortcut pressed
@@ -88,7 +88,7 @@ private:
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv); // Create application object
-    Exercise41Window window;      // Create main window
+    Exercise42Window window;      // Create main window
     window.show();                // Show the window
     return app.exec();            // Enter the Qt event loop
 }
