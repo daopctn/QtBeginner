@@ -182,13 +182,6 @@ Create a traffic light widget:
 - Current state display
 - Realistic timing between changes
 
-### Exercise 5.5: Graph Plotter
-Implement a simple graph widget:
-- Plots points from a list of coordinates
-- Draws axes with labels
-- Connect points with lines
-- Support for multiple data series
-- Legend display
 
 ## Level 6: Dialogs and Windows
 
